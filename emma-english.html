@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma's English Portfolio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6EC;
+    --ink: #1A1208;
+    --warm-brown: #8B5E3C;
+    --gold: #D4A843;
+    --gold-light: #F0D08A;
+    --terracotta: #C4603A;
+    --sage: #7A9E7E;
+    --dusty-rose: #D4869A;
+    --sky: #6B9FBF;
+    --lavender: #9B8EC4;
+    --section-writing: #C4603A;
+    --section-grammar: #7A9E7E;
+    --section-literature: #6B9FBF;
+    --section-verbs: #9B8EC4;
+    --section-vocab: #D4A843;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── COVER ── */
+  #cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px 20px;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  #cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(212,168,67,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, rgba(107,159,191,0.12) 0%, transparent 60%);
+  }
+
+  .cover-ornament {
+    font-size: 80px;
+    margin-bottom: 24px;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .cover-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-title span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .cover-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    color: rgba(253,246,236,0.6);
+    margin-top: 16px;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-divider {
+    width: 120px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nav-card {
+    background: rgba(253,246,236,0.06);
+    border: 1px solid rgba(253,246,236,0.15);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-card:hover {
+    background: rgba(253,246,236,0.12);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .nav-card .nav-icon { font-size: 28px; }
+  .nav-card .nav-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+  }
+  .nav-card .nav-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    display: none;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .section.active { display: block; }
+
+  .section-header {
+    padding: 48px 40px 40px;
+    border-bottom: 1px solid rgba(26,18,8,0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    background: var(--cream);
+    z-index: 10;
+  }
+
+  .back-btn {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  .back-btn:hover { background: var(--warm-brown); }
+
+  .section-title-area { flex: 1; }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .section-body {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(26,18,8,0.06);
+    border: 1px solid rgba(26,18,8,0.06);
+    animation: slideUp 0.4s ease both;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.1s; }
+  .card:nth-child(4) { animation-delay: 0.15s; }
+  .card:nth-child(5) { animation-delay: 0.2s; }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-title .emoji { font-size: 22px; }
+
+  /* ── REFERENCE BOXES ── */
+  .ref-box {
+    background: rgba(26,18,8,0.03);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 12px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .ref-box.blue { border-color: var(--sky); }
+  .ref-box.green { border-color: var(--sage); }
+  .ref-box.rose { border-color: var(--dusty-rose); }
+  .ref-box.purple { border-color: var(--lavender); }
+  .ref-box.terracotta { border-color: var(--terracotta); }
+
+  /* ── TABLES ── */
+  .verb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+
+  .verb-table th {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .verb-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(26,18,8,0.06);
+  }
+
+  .verb-table tr:hover td { background: rgba(212,168,67,0.06); }
+
+  .verb-table tr:last-child td { border-bottom: none; }
+
+  .verb-squad-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--warm-brown);
+    margin: 20px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--gold-light);
+  }
+
+  /* ── QUIZ ── */
+  .quiz-container { margin: 16px 0; }
+
+  .quiz-question {
+    background: rgba(26,18,8,0.03);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(26,18,8,0.06);
+  }
+
+  .quiz-question p { font-size: 15px; margin-bottom: 10px; }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 6px; }
+
+  .quiz-option {
+    background: white;
+    border: 1.5px solid rgba(26,18,8,0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    text-align: left;
+  }
+
+  .quiz-option:hover { border-color: var(--gold); background: rgba(212,168,67,0.05); }
+  .quiz-option.correct { background: rgba(122,158,126,0.15); border-color: var(--sage); color: #3D6B41; }
+  .quiz-option.wrong { background: rgba(196,96,58,0.1); border-color: var(--terracotta); color: var(--terracotta); }
+
+  .quiz-feedback {
+    font-size: 13px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: rgba(122,158,126,0.1); color: #3D6B41; }
+  .quiz-feedback.wrong { background: rgba(196,96,58,0.08); color: var(--terracotta); }
+
+  /* ── FILL IN BLANK ── */
+  .fill-blank {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 2px solid var(--ink);
+    padding: 2px 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .fill-blank:focus { border-color: var(--gold); }
+  .fill-blank.correct { border-color: var(--sage); color: var(--sage); }
+  .fill-blank.wrong { border-color: var(--terracotta); color: var(--terracotta); }
+
+  .check-btn {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all 0.2s;
+  }
+  .check-btn:hover { background: var(--warm-brown); }
+
+  /* ── SIMILE BUILDER ── */
+  .simile-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    text-align: center;
+    padding: 24px;
+    background: rgba(26,18,8,0.03);
+    border-radius: 12px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--warm-brown);
+    margin: 12px 0;
+  }
+
+  .simile-parts { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 12px 0; }
+
+  .simile-part {
+    background: white;
+    border: 1.5px solid rgba(26,18,8,0.1);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .simile-part:hover, .simile-part.selected {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  /* ── STORY DISPLAY ── */
+  .story-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #2A1E0E;
+  }
+
+  .story-text mark {
+    background: rgba(212,168,67,0.3);
+    border-radius: 2px;
+    padding: 1px 3px;
+  }
+
+  .story-text .highlight-blue { background: rgba(107,159,191,0.25); border-radius: 2px; padding: 1px 3px; }
+  .story-text .highlight-green { background: rgba(122,158,126,0.25); border-radius: 2px; padding: 1px 3px; }
+  .story-text .highlight-purple { background: rgba(155,142,196,0.3); border-radius: 2px; padding: 1px 3px; }
+  .story-text .highlight-orange { background: rgba(212,168,67,0.35); border-radius: 2px; padding: 1px 3px; border-bottom: 2px solid var(--gold); }
+
+  /* ── VOCAB CARDS ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+
+  .vocab-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(26,18,8,0.07);
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vocab-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .vocab-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,18,8,0.1); }
+
+  .vocab-word {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--warm-brown);
+    margin-bottom: 6px;
+  }
+
+  .vocab-def {
+    font-size: 13px;
+    color: rgba(26,18,8,0.7);
+    line-height: 1.5;
+  }
+
+  .vocab-card .flip-hint {
+    font-size: 10px;
+    color: rgba(26,18,8,0.3);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ── PILL TAGS ── */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Space Mono', monospace;
+    margin: 2px;
+  }
+
+  .pill-adj { background: rgba(196,96,58,0.12); color: var(--terracotta); }
+  .pill-adv { background: rgba(122,158,126,0.15); color: #3D6B41; }
+  .pill-simile { background: rgba(107,159,191,0.15); color: #2D6080; }
+  .pill-noun { background: rgba(155,142,196,0.15); color: #5A4A8A; }
+  .pill-verb { background: rgba(212,168,67,0.2); color: #7A5C00; }
+
+  /* ── ACCORDION ── */
+  .accordion-item {
+    border: 1px solid rgba(26,18,8,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .accordion-header {
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s;
+    background: white;
+  }
+
+  .accordion-header:hover { background: rgba(212,168,67,0.06); }
+
+  .accordion-header .chevron {
+    transition: transform 0.3s;
+    font-style: normal;
+    font-size: 12px;
+  }
+
+  .accordion-item.open .chevron { transform: rotate(180deg); }
+
+  .accordion-body {
+    display: none;
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.7;
+    background: rgba(26,18,8,0.015);
+    border-top: 1px solid rgba(26,18,8,0.06);
+  }
+
+  .accordion-item.open .accordion-body { display: block; }
+
+  /* ── SCORE ── */
+  .score-bar {
+    background: rgba(26,18,8,0.08);
+    border-radius: 100px;
+    height: 8px;
+    margin: 12px 0 4px;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage), var(--gold));
+    border-radius: 100px;
+    transition: width 0.6s ease;
+  }
+
+  .score-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--warm-brown);
+  }
+
+  /* ── EMMA LABEL ── */
+  .emma-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .section-header { padding: 24px 20px; flex-direction: column; gap: 12px; }
+    .section-body { padding: 24px 20px; }
+    .nav-grid { grid-template-columns: repeat(2, 1fr); }
+    .verb-table { font-size: 12px; }
+    .verb-table th, .verb-table td { padding: 7px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div id="cover">
+  <div class="cover-ornament">📖</div>
+  <div class="cover-eyebrow">Northlands School · 2026</div>
+  <h1 class="cover-title">Emma's<br><span>English</span></h1>
+  <p class="cover-subtitle">Year 5 · Portfolio Interactivo</p>
+  <div class="cover-divider"></div>
+
+  <div class="nav-grid">
+    <a class="nav-card" onclick="showSection('writing')">
+      <span class="nav-icon">✍️</span>
+      <span class="nav-label">Writing</span>
+      <span class="nav-count">Adjectives · Adverbs · Similes</span>
+    </a>
+    <a class="nav-card" onclick="showSection('grammar')">
+      <span class="nav-icon">⚙️</span>
+      <span class="nav-label">Grammar</span>
+      <span class="nav-count">Past Simple · Descriptions</span>
+    </a>
+    <a class="nav-card" onclick="showSection('verbs')">
+      <span class="nav-icon">🔀</span>
+      <span class="nav-label">Irregular Verbs</span>
+      <span class="nav-count">Squads + Practice</span>
+    </a>
+    <a class="nav-card" onclick="showSection('literature')">
+      <span class="nav-icon">🐉</span>
+      <span class="nav-label">Literature</span>
+      <span class="nav-count">The Witches · Fantasy</span>
+    </a>
+    <a class="nav-card" onclick="showSection('vocab')">
+      <span class="nav-icon">📚</span>
+      <span class="nav-label">Vocabulary</span>
+      <span class="nav-count">Word Cards</span>
+    </a>
+    <a class="nav-card" onclick="showSection('quiz')">
+      <span class="nav-icon">🎯</span>
+      <span class="nav-label">Practice</span>
+      <span class="nav-count">Quiz Interactivo</span>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ WRITING ═══ -->
+<div id="section-writing" class="section">
+  <div class="section-header">
+    <button class="back-btn" onclick="showCover()">← Back</button>
+    <div class="section-title-area">
+      <span class="section-tag" style="background:rgba(196,96,58,0.12);color:var(--terracotta);">✍️ Yellow Folder</span>
+      <h2 class="section-title">Writing</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- Adjectives -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🏷️</span> Adjectives</h3>
+      <div class="ref-box terracotta">
+        <strong>Adjectives</strong> describe nouns — they tell us more about how something <em>looks, feels, sounds, smells,</em> or <em>behaves</em>.
+      </div>
+      <div style="margin:16px 0;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:10px;">ORDER in English (Opinion → Size → Age → Shape → Color → Origin → Material)</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="pill pill-adj">Opinion</span>
+          <span style="color:rgba(26,18,8,0.3);font-size:12px;padding-top:4px;">→</span>
+          <span class="pill pill-adj">Size</span>
+          <span style="color:rgba(26,18,8,0.3);font-size:12px;padding-top:4px;">→</span>
+          <span class="pill pill-adj">Age</span>
+          <span style="color:rgba(26,18,8,0.3);font-size:12px;padding-top:4px;">→</span>
+          <span class="pill pill-adj">Shape</span>
+          <span style="color:rgba(26,18,8,0.3);font-size:12px;padding-top:4px;">→</span>
+          <span class="pill pill-adj">Color</span>
+          <span style="color:rgba(26,18,8,0.3);font-size:12px;padding-top:4px;">→</span>
+          <span class="pill pill-adj">Origin</span>
+          <span style="color:rgba(26,18,8,0.3);font-size:12px;padding-top:4px;">→</span>
+          <span class="pill pill-adj">Material</span>
+        </div>
+      </div>
+      <div class="ref-box">
+        <strong>Example:</strong> <em>He is a handsome, short, young boy with curly black hair.</em>
+      </div>
+      <div style="margin-top:16px;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:10px;">Position in a Sentence</p>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Before a noun</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">
+            She has a <strong>beautiful</strong> dress.<br>
+            The <strong>old</strong> house creaked.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>After linking verbs (be, seem, look, feel...)</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">
+            The dress <strong>is</strong> beautiful.<br>
+            He <strong>looks</strong> tired.<br>
+            The music <strong>is</strong> loud.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Adverbs of Manner -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">💨</span> Adverbs of Manner</h3>
+      <div class="ref-box green">
+        <strong>Adverbs of manner</strong> describe <em>how</em> an action happens. They usually modify <strong>verbs</strong>.
+        <br><br>
+        <strong>Examples:</strong> quickly, slowly, loudly, quietly, beautifully, carefully, badly, easily
+      </div>
+      <div style="margin:16px 0;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:10px;">How to Form Them</p>
+        <table class="verb-table">
+          <tr><th>Adjective</th><th>Rule</th><th>Adverb</th></tr>
+          <tr><td>slow</td><td>+ ly</td><td>slowly</td></tr>
+          <tr><td>quick</td><td>+ ly</td><td>quickly</td></tr>
+          <tr><td>careful</td><td>+ ly</td><td>carefully</td></tr>
+          <tr><td>happy</td><td>y → ily</td><td>happily</td></tr>
+          <tr><td>gentle</td><td>le → ly</td><td>gently</td></tr>
+          <tr><td>basic</td><td>ic → ically</td><td>basically</td></tr>
+        </table>
+        <div class="ref-box">
+          <strong>Irregular:</strong> good → <em>well</em> · fast → <em>fast</em> · hard → <em>hard</em> · late → <em>late</em>
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:10px;">Position in Sentence</p>
+        <div class="ref-box blue">
+          He drives <strong>carefully</strong>. (after verb)<br>
+          She painted the room <strong>beautifully</strong>. (after object)
+        </div>
+      </div>
+    </div>
+
+    <!-- Similes -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🔮</span> Similes</h3>
+      <div class="ref-box purple">
+        <strong>Similes</strong> compare two different things using <strong>"like"</strong> or <strong>"as...as"</strong>.<br><br>
+        Authors use similes to create vivid mental images for the reader.
+      </div>
+      <div style="margin:16px 0;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:8px;">Examples from Emma's work</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="ref-box" style="background:rgba(155,142,196,0.08);">
+            "He is <strong>as strong as an elephant.</strong>" <span class="pill pill-simile">as...as</span>
+          </div>
+          <div class="ref-box" style="background:rgba(155,142,196,0.08);">
+            "The water was <strong>as cold as ice.</strong>" <span class="pill pill-simile">as...as</span>
+          </div>
+          <div class="ref-box" style="background:rgba(155,142,196,0.08);">
+            "Her smile was <strong>like sunshine.</strong>" <span class="pill pill-simile">like</span>
+          </div>
+          <div class="ref-box" style="background:rgba(155,142,196,0.08);">
+            "Flames came out of its mouth <strong>like an angry, erupting volcano!</strong>" <span class="pill pill-simile">like</span>
+          </div>
+          <div class="ref-box" style="background:rgba(155,142,196,0.08);">
+            "His heart beating <strong>like thunder</strong>" <span class="pill pill-simile">like</span>
+          </div>
+        </div>
+      </div>
+      <!-- Simile Builder -->
+      <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:8px;">✨ Build Your Own Simile</p>
+      <div id="simile-display" class="simile-display">Click parts below to build a simile...</div>
+      <div class="simile-parts" id="simile-builder">
+        <span class="simile-part" onclick="buildSimile(this,'Her voice is ')">Her voice is</span>
+        <span class="simile-part" onclick="buildSimile(this,'He runs ')">He runs</span>
+        <span class="simile-part" onclick="buildSimile(this,'The night was ')">The night was</span>
+        <span class="simile-part" onclick="buildSimile(this,'as sweet as ')">as sweet as</span>
+        <span class="simile-part" onclick="buildSimile(this,'as dark as ')">as dark as</span>
+        <span class="simile-part" onclick="buildSimile(this,'like a ')">like a</span>
+        <span class="simile-part" onclick="buildSimile(this,'as fast as ')">as fast as</span>
+        <span class="simile-part" onclick="buildSimile(this,'honey')">honey</span>
+        <span class="simile-part" onclick="buildSimile(this,'midnight')">midnight</span>
+        <span class="simile-part" onclick="buildSimile(this,'lightning')">lightning</span>
+        <span class="simile-part" onclick="buildSimile(this,'a shooting star')">a shooting star</span>
+      </div>
+      <button class="check-btn" onclick="resetSimile()" style="background:rgba(26,18,8,0.08);color:var(--ink);">Reset ↺</button>
+    </div>
+
+    <!-- Sentence Expansion -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">📝</span> Expanding Sentences</h3>
+      <div class="ref-box">
+        Take a <strong>basic sentence</strong> and make it more interesting by adding: at least <strong>one adjective</strong>, <strong>one adverb</strong>, and (if possible) <strong>a simile</strong>.
+      </div>
+      <div style="margin:16px 0;display:flex;flex-direction:column;gap:12px;">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>🐕 The dog ran.</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">
+            The <strong>fluffy</strong> dog ran <strong>quickly</strong>, like a <em>speeding bullet</em>.<br>
+            <span class="pill pill-adj">adjective: fluffy</span>
+            <span class="pill pill-adv">adverb: quickly</span>
+            <span class="pill pill-simile">simile: like a speeding bullet</span>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>🎤 The girl sang.</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">
+            The <strong>talented</strong> girl sang <strong>beautifully</strong>, like a <em>nightingale</em>.<br>
+            <span class="pill pill-adj">adjective: talented</span>
+            <span class="pill pill-adv">adverb: beautifully</span>
+            <span class="pill pill-simile">simile: like a nightingale</span>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>🚗 The car moved.</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">
+            The <strong>old</strong> car moved <strong>slowly</strong>, like a <em>tired turtle</em>.<br>
+            <span class="pill pill-adj">adjective: old</span>
+            <span class="pill pill-adv">adverb: slowly</span>
+            <span class="pill pill-simile">simile: like a tired turtle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ GRAMMAR ═══ -->
+<div id="section-grammar" class="section">
+  <div class="section-header">
+    <button class="back-btn" onclick="showCover()">← Back</button>
+    <div class="section-title-area">
+      <span class="section-tag" style="background:rgba(122,158,126,0.15);color:var(--sage);">⚙️ Grammar</span>
+      <h2 class="section-title">Grammar & Descriptions</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- Past Simple -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">⏪</span> Past Simple</h3>
+      <div class="ref-box green">
+        Use the Past Simple to talk about <strong>completed actions in the past</strong>.
+      </div>
+      <div style="margin:16px 0;">
+        <table class="verb-table">
+          <tr><th>Form</th><th>Structure</th><th>Example</th></tr>
+          <tr><td>✅ Affirmative</td><td>Subject + past verb</td><td>The boy <strong>turned</strong> to stone.</td></tr>
+          <tr><td>❌ Negative</td><td>did not / didn't + base verb</td><td>The boy <strong>did not turn</strong> to stone.</td></tr>
+          <tr><td>❓ Question</td><td>Did + subject + base verb?</td><td><strong>Did</strong> the boy <strong>turn</strong> to stone?</td></tr>
+        </table>
+      </div>
+      <div class="ref-box">
+        ⚠️ <strong>Watch out!</strong> When you use <em>did</em>, the main verb goes back to the <strong>infinitive</strong> (base form).<br>
+        ✗ Did the boy <del>turned</del>? → ✓ Did the boy <strong>turn</strong>?
+      </div>
+      <div style="margin-top:16px;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:10px;">From The Witches: Grandmamma's Secret</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="ref-box">
+            <strong>Fact:</strong> Ragnhild went away with the tall lady.<br>
+            <strong>Negative:</strong> Ragnhild <em>didn't go</em> away with the tall lady.<br>
+            <strong>Question:</strong> Did Ragnhild go away with the tall lady?
+          </div>
+          <div class="ref-box">
+            <strong>Fact:</strong> The girl grew feathers all over her body.<br>
+            <strong>Negative:</strong> The girl <em>didn't grow</em> feathers all over her body.<br>
+            <strong>Question:</strong> Did the girl grow feathers all over her body?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Writing a Description -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🖼️</span> Writing a Description</h3>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>📋 Paragraph 1: Physical Description</span><i class="chevron">▼</i>
+        </div>
+        <div class="accordion-body">
+          <strong>Use basic features:</strong> hair color, eye color, skin tone, distinguishing features (freckles, scars, wrinkles, moles), clothing.<br><br>
+          <strong>Descriptive adjectives:</strong> Include words for physical traits in detail (tall, short, muscular, slender, elegant).<br><br>
+          <strong>Similes:</strong> Compare the character's features to something familiar.<br>
+          <em>Example: "His eyes are as blue as the ocean."</em>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <span>💭 Paragraph 2: Personality Traits</span><i class="chevron">▼</i>
+        </div>
+        <div class="accordion-body">
+          <strong>Describe behavior and actions:</strong> How does the character behave with others? Are they friendly, shy, loud, quiet, or brave?<br><br>
+          <strong>Adverbs of manner:</strong> Include how the character behaves — kindly, cautiously, proudly, eagerly.<br><br>
+          <strong>Adjectives for character traits:</strong> stubborn, compassionate, arrogant, generous, brave, caring, helpful.
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:12px;">📖 Example Description</p>
+        <div class="story-text" style="font-size:14px;">
+          <p><strong>PHYSICAL:</strong> The boy has short, <span class="highlight-blue">light brown hair</span> that is a little <mark>messy</mark>. His eyes are <span class="highlight-blue">blue like the sky</span>. His skin is fair, and he has a few small freckles on his nose. He is <mark>small and thin</mark>, so he looks younger than he is. He wears simple clothes like a T-shirt and shorts. His smile is <span class="highlight-blue">as bright as the sun</span>, and he looks kind and friendly.</p>
+          <br>
+          <p><strong>PERSONALITY:</strong> The boy is brave and curious. He is friendly and talks <span class="highlight-green">kindly</span> to others. He listens <span class="highlight-green">carefully</span> and learns <span class="highlight-green">quickly</span>. His mind is like a sponge because he remembers many things. Sometimes he feels scared, but he acts <span class="highlight-green">bravely</span> and keeps going. He is also caring and helpful, and he behaves <span class="highlight-green">politely</span> with other people.</p>
+        </div>
+        <div style="margin-top:10px;">
+          <span class="pill pill-adj">adj: messy, small, thin, brave, curious</span>
+          <span class="pill pill-adv">adv: kindly, carefully, quickly, bravely, politely</span>
+          <span class="pill pill-simile">similes: like the sky · as bright as the sun · like a sponge</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Types of Words -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">📊</span> Types of Words</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:8px;">
+        <div style="background:rgba(196,96,58,0.07);border-radius:12px;padding:16px;border:1px solid rgba(196,96,58,0.2);">
+          <p style="font-weight:700;color:var(--terracotta);margin-bottom:8px;">🎬 Verbs</p>
+          <p style="font-size:13px;">Words that describe <strong>actions</strong>.</p>
+          <p style="font-size:12px;color:rgba(26,18,8,0.5);margin-top:6px;">walk · jump · play · sing · run</p>
+        </div>
+        <div style="background:rgba(122,158,126,0.08);border-radius:12px;padding:16px;border:1px solid rgba(122,158,126,0.25);">
+          <p style="font-weight:700;color:var(--sage);margin-bottom:8px;">🏷️ Adjectives</p>
+          <p style="font-size:13px;">Words that <strong>describe nouns</strong>.</p>
+          <p style="font-size:12px;color:rgba(26,18,8,0.5);margin-top:6px;">tall · small · brave · beautiful</p>
+        </div>
+        <div style="background:rgba(107,159,191,0.08);border-radius:12px;padding:16px;border:1px solid rgba(107,159,191,0.25);">
+          <p style="font-weight:700;color:var(--sky);margin-bottom:8px;">🏛️ Nouns</p>
+          <p style="font-size:13px;"><strong>People, places, animals, things.</strong></p>
+          <p style="font-size:12px;color:rgba(26,18,8,0.5);margin-top:6px;">chair · bird · Buenos Aires</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ IRREGULAR VERBS ═══ -->
+<div id="section-verbs" class="section">
+  <div class="section-header">
+    <button class="back-btn" onclick="showCover()">← Back</button>
+    <div class="section-title-area">
+      <span class="section-tag" style="background:rgba(155,142,196,0.15);color:var(--lavender);">🔀 Verbs</span>
+      <h2 class="section-title">Irregular Verbs</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="card">
+      <p style="font-size:13px;color:rgba(26,18,8,0.5);margin-bottom:20px;">All the irregular verb squads from Emma's binder — organized by group.</p>
+
+      <!-- VIP -->
+      <p class="verb-squad-header">⭐ VIP Verbs</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>do / does</td><td>did</td><td>done</td></tr>
+        <tr><td>am / is / are</td><td>was / were</td><td>been</td></tr>
+        <tr><td>have</td><td>had</td><td>had</td></tr>
+      </table>
+
+      <!-- Sing-Sang-Sung -->
+      <p class="verb-squad-header">🎵 Sing-Sang-Sung Squad</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>ring</td><td>rang</td><td>rung</td></tr>
+        <tr><td>sing</td><td>sang</td><td>sung</td></tr>
+        <tr><td>drink</td><td>drank</td><td>drunk</td></tr>
+        <tr><td>swim</td><td>swam</td><td>swum</td></tr>
+        <tr><td>begin</td><td>began</td><td>begun</td></tr>
+        <tr><td>run</td><td>ran</td><td>run</td></tr>
+      </table>
+
+      <!-- eed-ed -->
+      <p class="verb-squad-header">📖 The -eed/-ed Squad</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>feed</td><td>fed</td><td>fed</td></tr>
+        <tr><td>lead</td><td>led</td><td>led</td></tr>
+        <tr><td>read</td><td>read</td><td>read</td></tr>
+      </table>
+
+      <!-- Lazy Verbs -->
+      <p class="verb-squad-header">😴 Lazy Verbs (same in all forms)</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>hit</td><td>hit</td><td>hit</td></tr>
+        <tr><td>fit</td><td>fit</td><td>fit</td></tr>
+        <tr><td>quit</td><td>quit</td><td>quit</td></tr>
+        <tr><td>let</td><td>let</td><td>let</td></tr>
+        <tr><td>set</td><td>set</td><td>set</td></tr>
+        <tr><td>shut</td><td>shut</td><td>shut</td></tr>
+        <tr><td>cut</td><td>cut</td><td>cut</td></tr>
+        <tr><td>put</td><td>put</td><td>put</td></tr>
+        <tr><td>hurt</td><td>hurt</td><td>hurt</td></tr>
+      </table>
+
+      <!-- Naughty -->
+      <p class="verb-squad-header">😈 Naughty Verbs (-ought/-aught)</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>buy</td><td>bought</td><td>bought</td></tr>
+        <tr><td>fight</td><td>fought</td><td>fought</td></tr>
+        <tr><td>seek</td><td>sought</td><td>sought</td></tr>
+        <tr><td>think</td><td>thought</td><td>thought</td></tr>
+        <tr><td>bring</td><td>brought</td><td>brought</td></tr>
+        <tr><td>teach</td><td>taught</td><td>taught</td></tr>
+        <tr><td>catch</td><td>caught</td><td>caught</td></tr>
+      </table>
+
+      <!-- -en squad -->
+      <p class="verb-squad-header">🌿 The -en Verbs Squad</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>write</td><td>wrote</td><td>written</td></tr>
+        <tr><td>choose</td><td>chose</td><td>chosen</td></tr>
+        <tr><td>freeze</td><td>froze</td><td>frozen</td></tr>
+        <tr><td>speak</td><td>spoke</td><td>spoken</td></tr>
+        <tr><td>break</td><td>broke</td><td>broken</td></tr>
+        <tr><td>steal</td><td>stole</td><td>stolen</td></tr>
+        <tr><td>ride</td><td>rode</td><td>ridden</td></tr>
+        <tr><td>rise</td><td>rose</td><td>risen</td></tr>
+        <tr><td>take</td><td>took</td><td>taken</td></tr>
+        <tr><td>shake</td><td>shook</td><td>shaken</td></tr>
+        <tr><td>overtake</td><td>overtook</td><td>overtaken</td></tr>
+        <tr><td>fall</td><td>fell</td><td>fallen</td></tr>
+        <tr><td>forget</td><td>forgot</td><td>forgotten</td></tr>
+        <tr><td>hide</td><td>hid</td><td>hidden</td></tr>
+        <tr><td>bite</td><td>bit</td><td>bitten</td></tr>
+        <tr><td>beat</td><td>beat</td><td>beaten</td></tr>
+        <tr><td>give</td><td>gave</td><td>given</td></tr>
+        <tr><td>forgive</td><td>forgave</td><td>forgiven</td></tr>
+      </table>
+
+      <!-- OWN -->
+      <p class="verb-squad-header">🌱 The OWN Verbs</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>throw</td><td>threw</td><td>thrown</td></tr>
+        <tr><td>grow</td><td>grew</td><td>grown</td></tr>
+        <tr><td>blow</td><td>blew</td><td>blown</td></tr>
+        <tr><td>draw</td><td>drew</td><td>drawn</td></tr>
+        <tr><td>fly</td><td>flew</td><td>flown</td></tr>
+        <tr><td>know</td><td>knew</td><td>known</td></tr>
+        <tr><td>show</td><td>showed</td><td>shown</td></tr>
+      </table>
+
+      <!-- T-Verbs -->
+      <p class="verb-squad-header">✂️ T-Verbs</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>bend</td><td>bent</td><td>bent</td></tr>
+        <tr><td>send</td><td>sent</td><td>sent</td></tr>
+        <tr><td>lend</td><td>lent</td><td>lent</td></tr>
+        <tr><td>spend</td><td>spent</td><td>spent</td></tr>
+        <tr><td>build</td><td>built</td><td>built</td></tr>
+        <tr><td>sleep</td><td>slept</td><td>slept</td></tr>
+        <tr><td>keep</td><td>kept</td><td>kept</td></tr>
+        <tr><td>creep</td><td>crept</td><td>crept</td></tr>
+        <tr><td>feel</td><td>felt</td><td>felt</td></tr>
+        <tr><td>mean</td><td>meant</td><td>meant</td></tr>
+        <tr><td>dream</td><td>dreamt</td><td>dreamt</td></tr>
+        <tr><td>meet</td><td>met</td><td>met</td></tr>
+        <tr><td>leave</td><td>left</td><td>left</td></tr>
+        <tr><td>lose</td><td>lost</td><td>lost</td></tr>
+        <tr><td>burn</td><td>burnt</td><td>burnt</td></tr>
+        <tr><td>see</td><td>saw</td><td>seen</td></tr>
+        <tr><td>wear</td><td>wore</td><td>worn</td></tr>
+        <tr><td>swear</td><td>swore</td><td>sworn</td></tr>
+      </table>
+
+      <!-- Crazy -->
+      <p class="verb-squad-header">🌀 Crazy Verbs</p>
+      <table class="verb-table">
+        <tr><th>Infinitive</th><th>Past Simple</th><th>Past Participle</th></tr>
+        <tr><td>tear</td><td>tore</td><td>torn</td></tr>
+        <tr><td>go</td><td>went</td><td>gone</td></tr>
+        <tr><td>hear</td><td>heard</td><td>heard</td></tr>
+        <tr><td>come</td><td>came</td><td>come</td></tr>
+        <tr><td>become</td><td>became</td><td>become</td></tr>
+        <tr><td>drive</td><td>drove</td><td>driven</td></tr>
+        <tr><td>eat</td><td>ate</td><td>eaten</td></tr>
+        <tr><td>get</td><td>got</td><td>gotten</td></tr>
+        <tr><td>prove</td><td>proved</td><td>proven</td></tr>
+        <tr><td>wake</td><td>woke</td><td>woken</td></tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LITERATURE ═══ -->
+<div id="section-literature" class="section">
+  <div class="section-header">
+    <button class="back-btn" onclick="showCover()">← Back</button>
+    <div class="section-title-area">
+      <span class="section-tag" style="background:rgba(107,159,191,0.15);color:var(--sky);">🐉 Literature</span>
+      <h2 class="section-title">Literature</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- Fantasy Story -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">⚔️</span> Through the Magic Knife</h3>
+      <p style="font-size:12px;color:rgba(26,18,8,0.4);margin-bottom:12px;font-family:'Space Mono',monospace;">Fantasy story · Colour-coded analysis</p>
+      <div style="margin-bottom:16px;">
+        <p style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--warm-brown);">Colour key:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="background:rgba(196,96,58,0.15);border-radius:6px;padding:4px 10px;font-size:11px;">🔴 Main character on a quest</span>
+          <span style="background:rgba(107,159,191,0.2);border-radius:6px;padding:4px 10px;font-size:11px;">🔵 Descriptive setting</span>
+          <span style="background:rgba(122,158,126,0.2);border-radius:6px;padding:4px 10px;font-size:11px;">🟢 Build-up / dilemma hint</span>
+          <span style="background:rgba(212,168,67,0.3);border-radius:6px;padding:4px 10px;font-size:11px;">🟡 Portal between worlds</span>
+          <span style="background:rgba(155,142,196,0.25);border-radius:6px;padding:4px 10px;font-size:11px;">🟣 Magical characters</span>
+        </div>
+      </div>
+      <div class="story-text">
+        <p><span style="background:rgba(196,96,58,0.2);border-radius:3px;padding:1px 4px;">Cal was bored!</span> It was the third day in a row that he had to stay indoors to look after his sick sister. And to top it all off, it was a <span class="highlight-blue">beautiful day</span> and he really wanted to be outside having an <span style="background:rgba(196,96,58,0.15);border-radius:3px;padding:1px 4px;">adventure.</span></p>
+        <br>
+        <p>Cal was sitting at the kitchen table as the <span class="highlight-blue">bright sun</span> shone through the window. On the kitchen bench lay a knife, its <span class="highlight-blue">sharp blade gleaming.</span> Cal noticed his reflection on the blade and thought, <em>'something's not quite right with this knife. I feel weird'.</em></p>
+        <br>
+        <p>Suddenly, a <span class="highlight-purple">shadow of a dragon appeared</span> on the blade. It looked so real! <span class="highlight-blue">Bright flames flowed from its nostrils</span> and its <span class="highlight-blue">scaly wings</span> stretched out as wide as his eyes could see. With his heart beating <strong>like thunder</strong>, Cal didn't dare to breathe. Just then, a <span class="highlight-orange">gray cloud appeared</span> in front of him. When the cloud disappeared, he was face-to-face with the large <span class="highlight-purple">dragon, with fierce-looking eyes,</span> standing in a <span class="highlight-blue">dark, murky cave.</span></p>
+        <br>
+        <p>Stunned and petrified, Cal knew he had to escape. He escaped out of the cave and ran for his life! He could hear the terrifying dragon behind him, reaching on him. The <span class="highlight-purple">furious dragon,</span> with saliva drooling from its mouth, was ready to attack. Cal, in panic and desperation, searched for somewhere to hide.</p>
+        <br>
+        <p>The ferocious dragon got closer and closer and with its mouth open wide, it charged at great speed towards Cal. Flames came out of its mouth <strong>like an angry, erupting volcano!</strong></p>
+        <br>
+        <p style="color:var(--sage);">Cal just about managed to avoid the dragon but knew he only had seconds to find somewhere to hide. He scurried around the corner to find himself back at the opening of the cave again. Suddenly, he found a little <span style="background:rgba(122,158,126,0.2);border-radius:3px;padding:1px 4px;">hollow</span> that seemed just the right size for him to hide in. Crouching down and holding his breath for the second time that day, Cal jumped into it quickly. With outstretched wings and blazing nostrils, the dragon swooped down to follow Cal but the hole was way too small for it to get through.</p>
+        <br>
+        <p><span class="highlight-orange">Unexpectedly, Cal found himself back in his bright kitchen once again.</span> 'Maybe being right here is just fine', Cal thought to himself, before noticing a strange burning smell and <strong>scorch</strong> marks all around the window frame...</p>
+      </div>
+    </div>
+
+    <!-- The Witches -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🧙</span> The Witches — Roald Dahl</h3>
+      <div class="ref-box blue">
+        <strong>What is a Simile?</strong><br>
+        A simile compares two things using <strong>"like"</strong> or <strong>"as"</strong>. Authors use similes to create vivid mental images for the reader.<br><br>
+        <em>Example: A witch's fingers are "like cold icicles" — you can imagine exactly how freezing and sharp they feel.</em>
+      </div>
+      <div style="margin:16px 0;">
+        <p style="font-size:13px;font-weight:600;color:var(--warm-brown);margin-bottom:10px;">Simile from The Witches — Emma's Analysis</p>
+        <table class="verb-table">
+          <tr><th>Quote</th><th>What is compared?</th><th>Effect on Reader</th></tr>
+          <tr>
+            <td style="font-style:italic;">"Or did someone pull it [the thumb] out of her hand <strong>like a tooth</strong>?"</td>
+            <td>The thumb is compared to a tooth being pulled out at the dentist</td>
+            <td>Painful · Tough · Gross · Scary</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Fox and Crow -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🦊</span> The Fox and the Crow</h3>
+      <p style="font-size:12px;color:rgba(26,18,8,0.4);margin-bottom:14px;font-family:'Space Mono',monospace;">Y5 Reading Comprehension · Northlands</p>
+      <div class="ref-box">
+        <strong>The story:</strong> A clever Fox sees a Crow on a tree holding cheese in her beak. The Fox uses flattery to make the Crow sing — and when she opens her beak, the cheese falls.
+      </div>
+      <div style="margin:16px 0;display:flex;flex-direction:column;gap:10px;">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Q1: What did the animal on the tree have in its mouth?</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">✅ <strong>A cheese</strong> (in her beak)</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Q2: Why does the Fox compliment the Crow?</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">The Fox compliments her <strong>because he wants the cheese</strong>. He uses flattery to make her open her beak.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Q3: What happens to the cheese when the Crow opens her beak?</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">When the Crow opens her beak to sing, the <strong>cheese falls</strong> straight into the Fox's open mouth. The Crow couldn't believe she had been tricked.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Q4: What lesson did you learn with this story?</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">I learn to <strong>not open your mouth</strong> because it falls the cheese. (Don't fall for flattery!)</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Q7: Who is more responsible for the Crow losing the cheese?</span><i class="chevron">▼</i>
+          </div>
+          <div class="accordion-body">The responsibility is <strong>the Crow's</strong> — she should not have believed the flattery and opened her beak.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fantasy elements -->
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🏰</span> Elements of a Fantasy Story</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:rgba(196,96,58,0.07);border-radius:8px;">
+          <span style="font-size:16px;">🔴</span>
+          <div><strong>Main character(s) on a quest or search</strong><br><span style="font-size:12px;color:rgba(26,18,8,0.5);">Cal wants adventure; is forced on an unexpected journey.</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:rgba(107,159,191,0.08);border-radius:8px;">
+          <span style="font-size:16px;">🔵</span>
+          <div><strong>Descriptive setting with descriptive adjectives</strong><br><span style="font-size:12px;color:rgba(26,18,8,0.5);">bright sun, sharp blade gleaming, dark murky cave</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:rgba(122,158,126,0.08);border-radius:8px;">
+          <span style="font-size:16px;">🟢</span>
+          <div><strong>Build-up to hint at a dilemma</strong><br><span style="font-size:12px;color:rgba(26,18,8,0.5);">"something's not quite right with this knife"</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:rgba(212,168,67,0.1);border-radius:8px;">
+          <span style="font-size:16px;">🟡</span>
+          <div><strong>Portal between real and imagined place</strong><br><span style="font-size:12px;color:rgba(26,18,8,0.5);">The gray cloud that transports Cal to the dragon's cave</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:rgba(155,142,196,0.1);border-radius:8px;">
+          <span style="font-size:16px;">🟣</span>
+          <div><strong>Magical, peculiar characters and creatures</strong><br><span style="font-size:12px;color:rgba(26,18,8,0.5);">The fierce dragon with blazing nostrils and scaly wings</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ VOCAB ═══ -->
+<div id="section-vocab" class="section">
+  <div class="section-header">
+    <button class="back-btn" onclick="showCover()">← Back</button>
+    <div class="section-title-area">
+      <span class="section-tag" style="background:rgba(212,168,67,0.2);color:#7A5C00;">📚 Vocab</span>
+      <h2 class="section-title">Vocabulary</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🐉</span> The Magic Knife / Dragon Words</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-word">fierce</div><div class="vocab-def">Physically violent and frightening</div></div>
+        <div class="vocab-card"><div class="vocab-word">murky</div><div class="vocab-def">Dark and dirty or difficult to see through</div></div>
+        <div class="vocab-card"><div class="vocab-word">stunned</div><div class="vocab-def">Very shocked or surprised</div></div>
+        <div class="vocab-card"><div class="vocab-word">petrified</div><div class="vocab-def">Extremely frightened</div></div>
+        <div class="vocab-card"><div class="vocab-word">furious</div><div class="vocab-def">Extremely angry</div></div>
+        <div class="vocab-card"><div class="vocab-word">drooling</div><div class="vocab-def">To allow saliva to flow out of your mouth</div></div>
+        <div class="vocab-card"><div class="vocab-word">ferocious</div><div class="vocab-def">Frightening and violent</div></div>
+        <div class="vocab-card"><div class="vocab-word">scurried</div><div class="vocab-def">To move quickly, with small, short steps</div></div>
+        <div class="vocab-card"><div class="vocab-word">hollow</div><div class="vocab-def">Having a hole or empty space inside</div></div>
+        <div class="vocab-card"><div class="vocab-word">crouching</div><div class="vocab-def">To bend your knees and lower yourself close to the ground, leaning forward slightly</div></div>
+        <div class="vocab-card"><div class="vocab-word">blazing</div><div class="vocab-def">Very bright and hot; powerful and impressive</div></div>
+        <div class="vocab-card"><div class="vocab-word">swooped</div><div class="vocab-def">To move very quickly through the air, especially down from a high position to attack</div></div>
+        <div class="vocab-card"><div class="vocab-word">scorch</div><div class="vocab-def">To change colour with dry heat, or to burn slightly</div></div>
+        <div class="vocab-card"><div class="vocab-word">gleaming</div><div class="vocab-def">Bright and shiny from being cleaned</div></div>
+        <div class="vocab-card"><div class="vocab-word">scaly</div><div class="vocab-def">(of fish etc) covered with scales</div></div>
+        <div class="vocab-card"><div class="vocab-word">indoors</div><div class="vocab-def">Into or inside a building</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🦊</span> Fox & Crow — Key Words</h3>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-word">flattering</div><div class="vocab-def">Praising someone, often insincerely, to gain an advantage</div></div>
+        <div class="vocab-card"><div class="vocab-word">suspicion</div><div class="vocab-def">A feeling that something is wrong or that someone is not to be trusted</div></div>
+        <div class="vocab-card"><div class="vocab-word">admiring</div><div class="vocab-def">Looking at with respect and pleasure</div></div>
+        <div class="vocab-card"><div class="vocab-word">splendid</div><div class="vocab-def">Impressive and beautiful</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ QUIZ ═══ -->
+<div id="section-quiz" class="section">
+  <div class="section-header">
+    <button class="back-btn" onclick="showCover()">← Back</button>
+    <div class="section-title-area">
+      <span class="section-tag" style="background:rgba(26,18,8,0.08);color:var(--ink);">🎯 Practice</span>
+      <h2 class="section-title">Practice Quiz</h2>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🏷️</span> Identify: Adjective, Adverb, or Simile?</h3>
+      <div class="quiz-container" id="quiz1"></div>
+      <div class="score-text" id="quiz1-score"></div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">🔀</span> Irregular Verb Flash Cards</h3>
+      <div id="flashcard-container" style="text-align:center;margin:16px 0;">
+        <div id="flashcard" style="background:var(--ink);color:var(--cream);border-radius:16px;padding:40px;cursor:pointer;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:all 0.3s;">
+          <div id="fc-word" style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;"></div>
+          <div id="fc-hint" style="font-size:12px;color:rgba(253,246,236,0.5);font-family:'Space Mono',monospace;"></div>
+        </div>
+        <p style="font-size:12px;color:rgba(26,18,8,0.4);margin-top:8px;">Click to reveal answer</p>
+        <div id="fc-answer" style="display:none;font-family:'Space Mono',monospace;font-size:14px;margin-top:12px;color:var(--warm-brown);padding:12px;background:rgba(212,168,67,0.1);border-radius:8px;"></div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:16px;">
+          <button class="check-btn" onclick="prevCard()">← Prev</button>
+          <button class="check-btn" onclick="nextCard()">Next →</button>
+        </div>
+        <div id="fc-counter" style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(26,18,8,0.4);margin-top:8px;"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title"><span class="emoji">⏪</span> Past Simple Fill-in</h3>
+      <p style="font-size:13px;color:rgba(26,18,8,0.5);margin-bottom:16px;">Complete these sentences with the correct past simple form.</p>
+      <div id="fill-container"></div>
+      <button class="check-btn" onclick="checkFill()">Check Answers ✓</button>
+      <div id="fill-score" style="margin-top:12px;font-family:'Space Mono',monospace;font-size:13px;color:var(--warm-brown);"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── NAVIGATION ──
+function showSection(name) {
+  document.getElementById('cover').style.display = 'none';
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function showCover() {
+  document.getElementById('cover').style.display = 'flex';
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  window.scrollTo(0,0);
+}
+
+// ── ACCORDION ──
+function toggleAccordion(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+
+// ── SIMILE BUILDER ──
+let simileText = '';
+function buildSimile(el, text) {
+  simileText += text;
+  document.getElementById('simile-display').textContent = simileText;
+  document.querySelectorAll('.simile-part').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function resetSimile() {
+  simileText = '';
+  document.getElementById('simile-display').textContent = 'Click parts below to build a simile...';
+  document.querySelectorAll('.simile-part').forEach(p => p.classList.remove('selected'));
+}
+
+// ── QUIZ 1 ──
+const quiz1Data = [
+  { q: 'The <strong>tiny</strong> kitten slept.', options: ['Adjective', 'Adverb', 'Simile'], answer: 0, exp: '"tiny" describes the kitten (a noun) — it\'s an adjective.' },
+  { q: 'She sang <strong>beautifully</strong>.', options: ['Adjective', 'Adverb', 'Simile'], answer: 1, exp: '"beautifully" describes how she sang — it\'s an adverb of manner.' },
+  { q: 'He is <strong>as strong as an elephant</strong>.', options: ['Adjective', 'Adverb', 'Simile'], answer: 2, exp: 'Uses "as...as" to compare — it\'s a simile.' },
+  { q: 'He spoke <strong>softly</strong>.', options: ['Adjective', 'Adverb', 'Simile'], answer: 1, exp: '"softly" tells us how he spoke — adverb of manner.' },
+  { q: 'The <strong>colorful</strong> bird flew away.', options: ['Adjective', 'Adverb', 'Simile'], answer: 0, exp: '"colorful" describes the bird — adjective.' },
+  { q: 'Her smile was <strong>like sunshine</strong>.', options: ['Adjective', 'Adverb', 'Simile'], answer: 2, exp: 'Uses "like" to compare smile to sunshine — simile.' },
+  { q: 'The water was <strong>as cold as ice</strong>.', options: ['Adjective', 'Adverb', 'Simile'], answer: 2, exp: '"as...as" comparison — simile.' },
+  { q: 'They ran <strong>quickly</strong> to school.', options: ['Adjective', 'Adverb', 'Simile'], answer: 1, exp: '"quickly" describes how they ran — adverb.' },
+];
+
+let q1Answers = new Array(quiz1Data.length).fill(null);
+
+function buildQuiz1() {
+  const container = document.getElementById('quiz1');
+  container.innerHTML = quiz1Data.map((item, i) => `
+    <div class="quiz-question">
+      <p>${i+1}. ${item.q}</p>
+      <div class="quiz-options">
+        ${item.options.map((opt, j) => `
+          <button class="quiz-option" id="q1-${i}-${j}" onclick="selectQ1(${i},${j})">
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+      <div class="quiz-feedback" id="q1-fb-${i}"></div>
+    </div>
+  `).join('');
+}
+
+function selectQ1(qi, oi) {
+  quiz1Data[qi].options.forEach((_, j) => {
+    const btn = document.getElementById(`q1-${qi}-${j}`);
+    btn.classList.remove('correct','wrong');
+  });
+  const btn = document.getElementById(`q1-${qi}-${oi}`);
+  const fb = document.getElementById(`q1-fb-${qi}`);
+  if (oi === quiz1Data[qi].answer) {
+    btn.classList.add('correct');
+    fb.textContent = '✅ ' + quiz1Data[qi].exp;
+    fb.className = 'quiz-feedback show correct';
+    q1Answers[qi] = true;
+  } else {
+    btn.classList.add('wrong');
+    fb.textContent = '❌ Not quite. ' + quiz1Data[qi].exp;
+    fb.className = 'quiz-feedback show wrong';
+    document.getElementById(`q1-${qi}-${quiz1Data[qi].answer}`).classList.add('correct');
+    q1Answers[qi] = false;
+  }
+  const correct = q1Answers.filter(a => a === true).length;
+  const answered = q1Answers.filter(a => a !== null).length;
+  document.getElementById('quiz1-score').textContent = `Score: ${correct} / ${answered} answered`;
+}
+
+// ── FLASHCARDS ──
+const flashcards = [
+  { inf: 'go', ps: 'went', pp: 'gone' },
+  { inf: 'see', ps: 'saw', pp: 'seen' },
+  { inf: 'write', ps: 'wrote', pp: 'written' },
+  { inf: 'take', ps: 'took', pp: 'taken' },
+  { inf: 'know', ps: 'knew', pp: 'known' },
+  { inf: 'think', ps: 'thought', pp: 'thought' },
+  { inf: 'bring', ps: 'brought', pp: 'brought' },
+  { inf: 'choose', ps: 'chose', pp: 'chosen' },
+  { inf: 'fall', ps: 'fell', pp: 'fallen' },
+  { inf: 'grow', ps: 'grew', pp: 'grown' },
+  { inf: 'break', ps: 'broke', pp: 'broken' },
+  { inf: 'speak', ps: 'spoke', pp: 'spoken' },
+  { inf: 'forget', ps: 'forgot', pp: 'forgotten' },
+  { inf: 'steal', ps: 'stole', pp: 'stolen' },
+  { inf: 'hide', ps: 'hid', pp: 'hidden' },
+  { inf: 'swim', ps: 'swam', pp: 'swum' },
+  { inf: 'sing', ps: 'sang', pp: 'sung' },
+  { inf: 'drink', ps: 'drank', pp: 'drunk' },
+  { inf: 'keep', ps: 'kept', pp: 'kept' },
+  { inf: 'sleep', ps: 'slept', pp: 'slept' },
+  { inf: 'leave', ps: 'left', pp: 'left' },
+  { inf: 'lose', ps: 'lost', pp: 'lost' },
+  { inf: 'feel', ps: 'felt', pp: 'felt' },
+  { inf: 'meet', ps: 'met', pp: 'met' },
+  { inf: 'send', ps: 'sent', pp: 'sent' },
+  { inf: 'build', ps: 'built', pp: 'built' },
+];
+
+let fcIndex = 0; let fcRevealed = false;
+
+function renderFlashcard() {
+  const card = flashcards[fcIndex];
+  document.getElementById('fc-word').textContent = card.inf;
+  document.getElementById('fc-hint').textContent = 'Infinitive → Past Simple → Past Participle';
+  document.getElementById('fc-answer').style.display = 'none';
+  document.getElementById('fc-answer').textContent = '';
+  fcRevealed = false;
+  document.getElementById('fc-counter').textContent = `${fcIndex+1} / ${flashcards.length}`;
+}
+
+document.getElementById('flashcard').addEventListener('click', () => {
+  if (!fcRevealed) {
+    const card = flashcards[fcIndex];
+    const ans = document.getElementById('fc-answer');
+    ans.textContent = `${card.inf} → ${card.ps} → ${card.pp}`;
+    ans.style.display = 'block';
+    fcRevealed = true;
+  }
+});
+
+function nextCard() { fcIndex = (fcIndex + 1) % flashcards.length; renderFlashcard(); }
+function prevCard() { fcIndex = (fcIndex - 1 + flashcards.length) % flashcards.length; renderFlashcard(); }
+
+// ── FILL IN BLANK ──
+const fillData = [
+  { sentence: 'The boy ___ (read) a book about the witches at the hotel.', answer: 'read', hint: 'irregular: read→read' },
+  { sentence: 'The witches ___ (begin) telling the boy how to recognise a witch.', answer: 'began', hint: 'irregular: begin→began' },
+  { sentence: 'Cal ___ (hide) inside the little hollow.', answer: 'hid', hint: 'irregular: hide→hid' },
+  { sentence: 'The dragon ___ (swoop) down to follow Cal.', answer: 'swooped', hint: 'regular: +ed' },
+  { sentence: 'She ___ (sing) beautifully at the concert.', answer: 'sang', hint: 'irregular: sing→sang' },
+  { sentence: 'The Fox ___ (steal) the cheese cleverly.', answer: 'stole', hint: 'irregular: steal→stole' },
+  { sentence: 'He ___ (feel) scared but acted bravely.', answer: 'felt', hint: 'irregular: feel→felt' },
+];
+
+function buildFill() {
+  const container = document.getElementById('fill-container');
+  container.innerHTML = fillData.map((item, i) => {
+    const parts = item.sentence.split('___');
+    return `<div style="margin-bottom:12px;font-size:14px;line-height:2;">
+      ${parts[0]}<input type="text" class="fill-blank" id="fill-${i}" placeholder="..."/>${parts[1]}
+      <div style="font-size:11px;color:rgba(26,18,8,0.35);margin-top:2px;font-style:italic;">💡 ${item.hint}</div>
+    </div>`;
+  }).join('');
+}
+
+function checkFill() {
+  let correct = 0;
+  fillData.forEach((item, i) => {
+    const input = document.getElementById(`fill-${i}`);
+    input.classList.remove('correct','wrong');
+    if (input.value.trim().toLowerCase() === item.answer.toLowerCase()) {
+      input.classList.add('correct');
+      correct++;
+    } else {
+      input.classList.add('wrong');
+      input.placeholder = item.answer;
+    }
+  });
+  const scoreEl = document.getElementById('fill-score');
+  const pct = Math.round(correct / fillData.length * 100);
+  scoreEl.textContent = `Score: ${correct} / ${fillData.length} correct (${pct}%)`;
+  if (pct === 100) scoreEl.textContent += ' 🌟 Perfect!';
+}
+
+// ── INIT ──
+buildQuiz1();
+renderFlashcard();
+buildFill();
+</script>
+</body>
+</html>
